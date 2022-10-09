@@ -3,3 +3,5 @@
 /server/node_modules
 /server/.env
 /server/env
+./sever/env
+./sever/.env
