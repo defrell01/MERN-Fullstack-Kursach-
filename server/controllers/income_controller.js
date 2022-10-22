@@ -8,8 +8,18 @@ class IncomeController {
         try {
             const {refreshToken} = req.cookies
             const {title, amount, category} = req.body
-            const income = incomeService.create(title, amount, category, refreshToken)
+            const income = await incomeService.create(title, amount, category, refreshToken)
             return res.json(income)
+        } catch (e) {
+            next(e)
+        }
+    }
+
+    async get(req, res, next) {
+        try {
+            const { refreshToken } = req.cookies
+            const info = await incomeService.get(refreshToken)
+            return res.json(info)
         } catch (e) {
             next(e)
         }

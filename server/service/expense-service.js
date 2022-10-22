@@ -19,15 +19,24 @@ class ExpenseService {
         }
         const user = await UserModel.findById(userData.id)
 
-        // if (!user.isActivated) {
-        //     throw ApiError.UnauthorizedError()
-        // }
+        
         const userDto = new UserDto(user)
 
         const expense = await expenseModel.create({title, amount, category, user: userDto.id})
 
 
-        return {...expense, user: userDto}
+        return {expense, user: userDto}
+    }
+
+    async get(refreshToken) {
+        
+        const userData = tokenService.validateRefreshToken(refreshToken)
+        const tokenFromDb = await tokenService.findToken(refreshToken)
+
+        
+        const expenses = await expenseModel.find({user: userData.id})
+
+        return expenses
     }
     
 }

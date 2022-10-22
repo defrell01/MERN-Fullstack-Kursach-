@@ -23,8 +23,10 @@ router.get('/users', authMiddleware, userController.getUsers);
 
 // TRACKING ROUTES //
 
-router.post('/expense', authMiddleware, expenseController.create);
-router.post('/income', authMiddleware, incomeController.create);
+router.post('/expenses/create', authMiddleware, expenseController.create);
+router.post('/incomes/create', authMiddleware, incomeController.create);
+router.get('/expenses/get', authMiddleware, expenseController.get);
+router.get('/incomes/get', authMiddleware, incomeController.get);
 
 // TRACKING ROUTES //
 

@@ -19,17 +19,22 @@ class IncomeService {
         }
         const user = await UserModel.findById(userData.id)
 
-        // if (!user.isActivated) {
-        //     throw ApiError.UnauthorizedError()
-        // }
         const userDto = new UserDto(user)
 
         const income = await IncomeModel.create({title, amount, category, user: userDto.id})
 
 
-        return {...income, user: userDto}
+        return {income, user: userDto}
     }
     
+    async get(refreshToken) {
+        
+        const userData = tokenService.validateRefreshToken(refreshToken)
+        
+        const incomes = await IncomeModel.find({user: userData.id})
+
+        return incomes
+    }
 }
 
 module.exports = new IncomeService();
