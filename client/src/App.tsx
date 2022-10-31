@@ -4,50 +4,58 @@ import LoginForm from './components/LoginForm';
 import { observer } from 'mobx-react-lite';
 import { IUser } from './models/response/IUser';
 import UserService from './services/UserService';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import FaceForm from './components/FaceForm/FaceForm';
 
 const App: FC = () => {
-  const { store } = useContext(Context)
-  const [users, setUsers] = useState<IUser[]>()
+//   const { store } = useContext(Context)
+//   const [users, setUsers] = useState<IUser[]>()
 
-  useEffect(() => {
-    if (localStorage.getItem('token')) {
-      store.checkAuth()
-    }
-  }, [])
+//   useEffect(() => {
+//     if (localStorage.getItem('token')) {
+//       store.checkAuth()
+//     }
+//   }, [])
 
-  if (store.isLoading){
-    return(
-      <div>Loading...</div>
-    )
-  }
+//   if (store.isLoading){
+//     return(
+//       <div>Loading...</div>
+//     )
+//   }
 
-  if (!store.isAuth) {
-    return (
-      <LoginForm/>
-    )
-  }
+//   if (!store.isAuth) {
+//     return (
+//       <LoginForm/>
+//     )
+//   }
 
-  async function getUsers() {
-    try {
-      const response = await UserService.fetchUsers()
-      setUsers(response.data)
-    } catch (e) {
-      console.log(e)
-    }
-  }
+//   async function getUsers() {
+//     try {
+//       const response = await UserService.fetchUsers()
+//       setUsers(response.data)
+//     } catch (e) {
+//       console.log(e)
+//     }
+//   }
+
+//   return (
+//     <div>
+//       <h1>{store.isAuth ? `User ${store.user.email}` : 'Authorize'}</h1>
+//       <h1>{store.user.isActivated? '' : 'Confirm your account via email'}</h1>
+//       <button onClick={() => store.logout()}>Log out</button>
+//       <div>
+//         <button onClick={getUsers}> Get users </button>
+//       </div>
+//       {users?.map(user => 
+//         <div key={user.email}>{user.email}</div>)}
+//     </div>
+//   )
 
   return (
-    <div>
-      <h1>{store.isAuth ? `User ${store.user.email}` : 'Authorize'}</h1>
-      <h1>{store.user.isActivated? '' : 'Confirm your account via email'}</h1>
-      <button onClick={() => store.logout()}>Log out</button>
-      <div>
-        <button onClick={getUsers}> Get users </button>
-      </div>
-      {users?.map(user => 
-        <div key={user.email}>{user.email}</div>)}
-    </div>
+    <FaceForm/>
   )
 }
+
+
 
 export default observer(App);
