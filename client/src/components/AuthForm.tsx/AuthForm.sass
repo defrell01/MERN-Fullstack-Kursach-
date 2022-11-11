@@ -1,87 +1,150 @@
 @font-face
     font-family: 'Lato'
-// #main
-//     background-color: #22BAC8
-//     background-size: cover
-//     height: 100%
-html, body
-    height: 100%
-    background-color: #22BAC8
-
 
 .wrapper
-    
+    background-color: #22BAC8
     display: flex
     flex-direction: column
-    min-height: 100%    
+    min-height: 100%   
 
-#header
-    padding-top: 69px
-    .inner_header
+    #main
+        background-color: #22BAC8
+        background-size: cover
+        height: 100%
+
+
+    .wrapper
+        background-color: #22BAC8
         display: flex
-        align-items: center
-        justify-content: space-between
+        flex-direction: column
+        min-height: 100%    
 
-        .logo
-            display: block
-            width: 94px
-            height: 94px
-            >img
-                width: 100%
-.form
-    display: block
-    padding-top: 45px
-    flex: 1 1 auto
-    .box
-        text-align: center
+    #header
+        padding-top: 69px
+        .inner_header
+            display: flex
+            align-items: center
+            justify-content: space-between
+
+            .logo
+                display: block
+                width: 94px
+                height: 94px
+                >img
+                    width: 100%
+    .form
         display: block
-        margin-left: auto
-        margin-right: auto
-        box-sizing: border-box
+        padding-top: 45px
+        flex: 1 1 auto
+        align-items: center
+        .box
+            text-align: center
+            display: block
+            margin-left: auto
+            margin-right: auto
+            box-sizing: border-box
 
-        width: 541px
-        height: 740px
+            width: 541px
+            height: 740px
 
-        background: #FFFFFF
-        border: 6px solid #000000
-        border-radius: 35px
-    .line
-        margin-top: 30px
-        width: 462px
-        height: 2px
+            background: #FFFFFF
+            border: 6px solid #000000
+            border-radius: 35px
+            .line
+                margin-top: 16px
+                margin-left: auto
+                margin-right: auto
+                width: 462px
+                height: 0px
+                align-items: center
 
-        border: 4px solid #000000
-    .guy
-        position: relative
-        width: 340px
-        height: 469px
-        top: 500px
-        margin: 0 auto
-        top: 250px
-        box-sizing: border-box
+                border: 1px solid #000000
+            .get_started
+                margin-top: 30px
+                font-size: 32px
+                font-weight: 600
+            .auth
+                margin-top: 80px
+                .auth_inp
+                    display: block
+                    border-radius: 35px
+                    align-items: center
+                    font-size: 24px
+                    font-weight: normal
+                    text-align: center
+                    margin-right: auto
+                    margin-left: auto
+                    height: 43px
+                    width: 438px
+                    margin-top: 30px
+                    background: #FF8552
+                    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+                    color: #000
+                .reg_btn
+                    font-size: 20px
+                    font-weight: normal
+                    margin-top: 100px
+                    width: 335px
+                    height: 67px
+                    background: #F49E4C
+                    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+                    border-radius: 20px
+                    transition: all 0.4s ease
+                    &:hover
+                        background-color: #000000
+                        color: #FF8552
+                        border-radius: 30px
+                        // transform: translateY(-8px)
+                .auth_btn
+                    font-size: 20px
+                    font-weight: normal
+                    margin-top: 60px
+                    width: 335px
+                    height: 67px
+                    background: #F49E4C
+                    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+                    border-radius: 20px
+                    transition: all 0.4s ease
+                    &:hover
+                        background-color: #000000
+                        color: #FF8552
+                        border-radius: 60px
+                        transform: translateY(-8px)
 
-#footer
-    margin: 0
-    padding: 0
-    height: 100%
-    display: flex
-    white-space: nowrap
-    flex-direction: column
-    align-items: center
-    margin-left: 50px
-    transition: all 0.4s ease
-    &:hover
-        transform: translateY(-8px)
-    .credentials
-        display: inline
-        align: left
-        float: left
-    .defrell
-        display: inline
-        text-decoration: none
-        float: left
-        color: #000
-        font-size: 20px
-        font-weight: normal
-        margin-left: 10px
-        line-height: 18px
+
+
+        .guy
+            position: relative
+            width: 340px
+            height: 469px
+            top: 500px
+            margin: 0 auto
+            top: 250px
+            box-sizing: border-box
+
+    #footer
+        margin: 0
+        padding: 0
+        height: 100%
+        display: flex
+        white-space: nowrap
+        flex-direction: column
+        align-items: center
+        margin-left: 50px
+        transition: all 0.4s ease
+        padding-bottom: 10px
+        &:hover
+            transform: translateY(-8px)
+        .credentials
+            display: inline
+            align: left
+            float: left
+        .defrell
+            display: inline
+            text-decoration: none
+            float: left
+            color: #000
+            font-size: 20px
+            font-weight: normal
+            margin-left: 10px
+            line-height: 18px

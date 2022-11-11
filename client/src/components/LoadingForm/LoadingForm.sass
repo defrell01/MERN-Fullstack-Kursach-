@@ -1,0 +1,77 @@
+.formLoader 
+  overflow: hidden
+  height: 100%
+  position: absolute
+  width: 100%
+  min-height: 150px
+
+
+.formLoader ul 
+  height: 100%
+  position: absolute
+  width: 100%
+  z-index: 999999
+  margin: 0
+
+
+@keyframes preload 
+  0% 
+    background: #22BAC8
+    opacity: 1
+  
+  50% 
+    background: #fff
+    opacity: 0.5
+  
+  100% 
+    background: #22BAC8
+    opacity: 1
+  
+
+
+.formLoader .formLoading 
+  display: block
+  height: 14px
+  margin: 0 auto
+  top: 50%
+  left: 100%
+  transform: translateY(-50%)
+  transform: translateX(-50%)
+  position: absolute
+  width: 100%
+  padding: 0
+
+
+.formLoader .formLoading li 
+  background: #fff
+  opacity: 0.5
+  display: block
+  float: left
+  width: 12px
+  height: 12px
+  border: 1px solid #22BAC8
+  line-height: 12px
+  padding: 0
+  position: relative
+  margin: 0 0 0 4px
+  animation: preload 1s infinite
+  top: -50%
+  border-radius: 50%
+
+
+.formLoader .formLoading li:first-child 
+  margin-left: 0
+
+
+.formLoader .formLoading li:nth-child(2)
+  animation-delay: .15s
+
+
+.formLoader .formLoading li:nth-child(3) 
+  animation-delay: .3s
+
+
+.formLoader.formLoader-complete 
+  opacity: 0
+  visibility: hidden
+  transition-duration: 1s

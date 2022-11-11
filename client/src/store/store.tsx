@@ -10,6 +10,9 @@ export default class Store {
     isAuth = false
     isLoading = false
 
+    isAuthPage = false
+    isMainPage = false
+
 
     constructor() {
         makeAutoObservable(this)
@@ -27,6 +30,15 @@ export default class Store {
         this.isLoading = bool;
     }
 
+    setAuthPage(bool: boolean) {
+        this.isAuthPage = bool;
+    }
+
+    setMainPage(bool: boolean) {
+        this.isMainPage = bool;
+        this.isAuthPage = bool;
+    }
+
     async login(email: string, password: string) {
         try {
             const response = await AuthService.login(email, password)
@@ -36,6 +48,10 @@ export default class Store {
             this.setUser(response.data.user)
         } catch (e) {
             console.log(e.response?.data?.message)
+        }
+        finally {
+            this.isAuthPage = false;
+            this.isMainPage = true;
         }
     }
 
@@ -70,6 +86,18 @@ export default class Store {
             this.setAuth(true)
             this.setUser(response.data.user)
 
+        } catch (e) {
+            console.log(e.response?.data?.message)
+        }
+        finally {
+            this.setLoading(false)
+        }
+    }
+
+    async goToAuth() {
+        this.setLoading(true)
+        try {
+            this.setAuthPage(true)
         } catch (e) {
             console.log(e.response?.data?.message)
         }

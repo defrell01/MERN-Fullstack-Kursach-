@@ -3,8 +3,13 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './FaceForm.sass'
+import { observer } from 'mobx-react-lite';
+import { Context } from '../../index'
+import { FC, useContext, useState } from 'react';
 
-const FaceForm = () => {
+
+const FaceForm: FC = () => {
+    const { store } = useContext(Context)
     return (
         <section id="main">
             <header id="header">
@@ -31,7 +36,7 @@ const FaceForm = () => {
                                 <div className='heading'> <div className='colored'>Easy way </div> to track <div className="colored">family finances </div></div>
                                 <div className="info_text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur neque molestias veritatis quasi blanditiis? Iste laudantium dolores nesciunt eius fugit, temporibus sapiente perferendis, ratione cupiditate beatae enim harum illo mollitia!</div>
                                 <div className="btns">
-                                    <button className="black_btn">Get started</button>
+                                    <button className="black_btn" onClick={() => store.setAuthPage(true)}>Get started</button>
                                     <button className="blue_btn">Learn more</button>
                                 </div>
                             </div>
@@ -44,9 +49,18 @@ const FaceForm = () => {
                     </div>
                 </div>
             </div>
+
+            <footer id="footer">
+                    <div className="container">
+                        <a href="https://github.com/defrell01">
+                            <img src="github.svg" alt="" className="credentials" />
+                            <div className="defrell">defrell01</div>
+                        </a>
+                    </div>
+                </footer>
         </section>
 
     );
 };
 
-export default FaceForm;
+export default observer(FaceForm);
