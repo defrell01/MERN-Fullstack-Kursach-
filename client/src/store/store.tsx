@@ -4,6 +4,7 @@ import { API_URL } from "../http";
 import { AuthResponse } from "../models/response/AuthResponse";
 import { IUser } from "../models/response/IUser";
 import AuthService from "../services/AuthService";
+import UserService from "../services/UserService";
 
 export default class Store {
     user = {} as IUser
@@ -37,6 +38,24 @@ export default class Store {
     setMainPage(bool: boolean) {
         this.isMainPage = bool;
         this.isAuthPage = bool;
+    }
+
+    async postIncome(category: string, amount: number) {
+        try {
+            const response = await UserService.postIncome(category, amount)
+            console.log(response)
+        } catch (e) {
+            console.log(e.response?.data?.message)
+        }
+    }
+
+    async postExpense(category: string, amount: number) {
+        try {
+            const response = await UserService.postExpense(category, amount)
+            console.log(response)
+        } catch (e) {
+            console.log(e.response?.data?.message)
+        }
     }
 
     async login(email: string, password: string) {
