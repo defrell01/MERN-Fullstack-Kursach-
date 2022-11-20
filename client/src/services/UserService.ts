@@ -21,12 +21,12 @@ export default class UserService {
 
     }
 
-    static postIncome(category: String, amount: Number): Promise<AxiosResponse<IncomeResponse>> {
-        return $api.post<IncomeResponse>('/incomes/create')
+    static postIncome(category: String, title: String, amount: Number): Promise<AxiosResponse<IncomeResponse>> {
+        return $api.post<IncomeResponse>('/incomes/create', {category, title, amount})
     }
 
-    static postExpense(category: String, amount: Number): Promise<AxiosResponse<ExpenseResponse>> {
-        return $api.post<ExpenseResponse>('/expenses/create')
+    static postExpense(category: String, title: String, amount: Number): Promise<AxiosResponse<ExpenseResponse>> {
+        return $api.post<ExpenseResponse>('/expenses/create', {category, title, amount})
     }
 }
 

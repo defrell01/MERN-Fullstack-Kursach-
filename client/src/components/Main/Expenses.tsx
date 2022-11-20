@@ -5,7 +5,7 @@ import { FC, useContext, useState } from 'react';
 import './MainForm.sass'
 import { IIncome } from '../../models/response/IIncome';
 import UserService from '../../services/UserService';
-const Main: FC = () => {
+const Expenses: FC = () => {
     const { store } = useContext(Context)
     const [incomes, setIncomes] = useState<IIncome[]>([])
 
@@ -121,4 +121,4 @@ const Main: FC = () => {
 };
 
 
-export default observer(Main);
+export default observer(Expenses);

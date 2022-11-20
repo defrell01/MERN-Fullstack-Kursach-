@@ -40,18 +40,18 @@ export default class Store {
         this.isAuthPage = bool;
     }
 
-    async postIncome(category: string, amount: number) {
+    async postIncome(category: string, title: string, amount: number) {
         try {
-            const response = await UserService.postIncome(category, amount)
+            const response = await UserService.postIncome(category, title, amount)
             console.log(response)
         } catch (e) {
             console.log(e.response?.data?.message)
         }
     }
 
-    async postExpense(category: string, amount: number) {
+    async postExpense(category: string, title: string, amount: number) {
         try {
-            const response = await UserService.postExpense(category, amount)
+            const response = await UserService.postExpense(category, title, amount)
             console.log(response)
         } catch (e) {
             console.log(e.response?.data?.message)

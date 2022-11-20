@@ -4,7 +4,8 @@ const IncomeSchema = new Schema({
     title: {
         type: String,
         trim: true,
-        required: 'Title is required'
+        // required: 'Title is required'
+        default: 'Test'
     },
 
     amount: {
@@ -16,7 +17,8 @@ const IncomeSchema = new Schema({
     category: {
         type: String,
         trim: true,
-        required: 'Category is required'
+        // required: 'Category is required'
+        default: 'Test'
     },
 
     incurred: {
