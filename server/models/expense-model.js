@@ -16,7 +16,7 @@ const ExpenseSchema = new Schema({
     category: {
         type: String,
         trim: true,
-        required: 'Category is required'
+        // required: 'Category is required'
     },
 
     incurred: {

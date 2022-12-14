@@ -13,6 +13,7 @@ export default class Store {
 
     isAuthPage = false
     isMainPage = false
+    isExpensePage = false
 
 
     constructor() {
@@ -38,6 +39,11 @@ export default class Store {
     setMainPage(bool: boolean) {
         this.isMainPage = bool;
         this.isAuthPage = bool;
+    }
+
+    switchPage(bool: boolean) {
+        this.isMainPage = bool;
+        this.isExpensePage = !bool;
     }
 
     async postIncome(category: string, title: string, amount: number) {
@@ -91,6 +97,8 @@ export default class Store {
             localStorage.removeItem('token')
             this.setAuth(false)
             this.setUser({} as IUser)
+            this.isExpensePage = false
+            this.isMainPage = false
         } catch (e) {
             console.log(e.response?.data?.message)
         }
@@ -117,6 +125,30 @@ export default class Store {
         this.setLoading(true)
         try {
             this.setAuthPage(true)
+        } catch (e) {
+            console.log(e.response?.data?.message)
+        }
+        finally {
+            this.setLoading(false)
+        }
+    }
+
+    async goToExpenses() {
+        this.setLoading(true)
+        try {
+            this.switchPage(false)
+        } catch (e) {
+            console.log(e.response?.data?.message)
+        }
+        finally {
+            this.setLoading(false)
+        }
+    }
+
+    async goToIncomes() {
+        this.setLoading(true)
+        try {
+            this.switchPage(true)
         } catch (e) {
             console.log(e.response?.data?.message)
         }

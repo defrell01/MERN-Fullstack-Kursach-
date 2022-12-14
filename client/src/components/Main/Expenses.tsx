@@ -5,23 +5,16 @@ import { FC, useContext, useState } from 'react';
 import './MainForm.sass'
 import { IIncome } from '../../models/response/IIncome';
 import UserService from '../../services/UserService';
+import { IExpense } from '../../models/response/IExpense';
 const Expenses: FC = () => {
     const { store } = useContext(Context)
-    const [incomes, setIncomes] = useState<IIncome[]>([])
+    const [expenses, setExpenses] = useState<IExpense[]>([])
 
-    async function getIncomes() {
-        try {
-            const response = await UserService.fetchIncomes()
-            setIncomes(response.data)
-        } catch (e) {
-            console.log(e)
-        }
-    }
-
+    
     async function getExpenses() {
         try {
-            const response = await UserService.fetchIncomes()
-            setIncomes(response.data)
+            const response = await UserService.fetchExpenses()
+            setExpenses(response.data)
         } catch (e) {
             console.log(e)
         }
@@ -49,7 +42,7 @@ const Expenses: FC = () => {
                             <div className="inner_header">
                                 <div className="col-lg-1"><img src="coin.svg" alt="" className="logo" /></div>
                                 <div className="col-lg-3"><div className="balance">Balance</div></div>
-                                <div className="col-lg-3"><button className='top_btn'>Incomes</button></div>
+                                <div className="col-lg-3"><button onClick={() => store.goToIncomes()} className='top_btn'>Incomes</button></div>
                                 <div className="col-lg-3"><button className='top_btn'>Expenses</button></div>
                                 <div className="col-lg-2"><button className='top_btn' onClick={() => store.logout()}>Log out</button></div>
                             </div>
@@ -69,7 +62,7 @@ const Expenses: FC = () => {
                                     <select name="category" className="category" 
                                         onChange={e => setCategory(e.target.value)}
                                         value={category}>
-                                        <option value={category}>Salary</option>
+                                        <option value={category}>Shopping</option>
                                         <option value={category}>Other</option>
                                     </select>
 
@@ -87,19 +80,19 @@ const Expenses: FC = () => {
                                         value={amount} 
                                     />
 
-                                    <button className="add_income" onClick={() => store.postIncome(category, title, Number(amount))}>Add income</button>
+                                    <button className="add_income" onClick={() => store.postExpense(category, title, Number(amount))}>Add expense</button>
 
                                 </div>
                             </div>
                             <div className="col-lg-5">
                                 <div className="info_box">
                                     <div className="values">
-                                        {incomes.map(income =>
-                                            <div>{income.amount} руб.</div>)
+                                        {expenses.map(expense =>
+                                            <div>{expense.amount} руб.</div>)
                                         }
                                     </div>
 
-                                    <button onClick={getIncomes} className="get_incomes">Get incomes</button>
+                                    <button onClick={getExpenses} className="get_incomes">Get expenses</button>
                                 </div>
 
                             </div>

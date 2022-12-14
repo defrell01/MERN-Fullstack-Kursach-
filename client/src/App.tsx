@@ -9,6 +9,7 @@ import FaceForm from './components/FaceForm/FaceForm';
 import AuthForm from './components/AuthForm.tsx/AuthForm';
 import Main from './components/Main/MainForm';
 import LoadingForm from './components/LoadingForm/LoadingForm';
+import Expenses from './components/Main/Expenses';
 
 
 const App: FC = () => {
@@ -34,9 +35,15 @@ const App: FC = () => {
       )
     }
 
-    if(store.isAuth) {
+    if(store.isAuth && store.isMainPage && !store.isExpensePage) {
       return (
         <Main/>
+      )
+    }
+
+    if(store.isAuth && !store.isMainPage && store.isExpensePage) {
+      return (
+        <Expenses/>
       )
     }
 
