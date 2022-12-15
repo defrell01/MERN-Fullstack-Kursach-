@@ -40,7 +40,7 @@ const Expenses: FC = () => {
                     <div className="container">
                         <div className="row">
                             <div className="inner_header">
-                                <div className="col-lg-1"><img src="coin.svg" alt="" className="logo" /></div>
+                                <div className="col-lg-1"><img src="Coin.svg" alt="" className="logo" /></div>
                                 <div className="col-lg-3"><div className="balance">Balance</div></div>
                                 <div className="col-lg-3"><button onClick={() => store.goToIncomes()} className='top_btn'>Incomes</button></div>
                                 <div className="col-lg-3"><button className='top_btn'>Expenses</button></div>
